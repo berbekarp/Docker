@@ -14,7 +14,7 @@ services:
     environment:
       - TZ=Europe/Budapest
       # Jelszó a webes felülethez (változtasd meg!):
-      - WEBPASSWORD='Disappointed79!'
+      - WEBPASSWORD='password123'
       # Itt állítjuk be a Cloudflare DNS-t (Elsődleges és Másodlagos)
       - PIHOLE_DNS_1=1.1.1.1
       - PIHOLE_DNS_2=1.0.0.1
