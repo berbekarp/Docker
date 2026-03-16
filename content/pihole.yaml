@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    hostname: pihole
+    restart: unless-stopped
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      # A webes felületet a 8080-as porton érjük majd el (pl. http://IP:8080/admin)
+      # Így a 80-as port szabad marad Nginx Proxy Managernek.
+      - "8080:80"
+    environment:
+      - TZ=Europe/Budapest
+      # Jelszó a webes felülethez (változtasd meg!):
+      - WEBPASSWORD='Disappointed79!'
+      # Itt állítjuk be a Cloudflare DNS-t (Elsődleges és Másodlagos)
+      - PIHOLE_DNS_1=1.1.1.1
+      - PIHOLE_DNS_2=1.0.0.1
+    volumes:
+      - '/mnt/nas/pihole/etc-pihole:/etc/pihole'
+      - '/mnt/nas/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
+    cap_add:
+      - NET_ADMIN

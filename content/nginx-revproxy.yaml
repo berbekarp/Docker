@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  rpxy:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'      # HTTP bemenet
+      - '81:81'      # Admin felület
+      - '443:443'    # HTTPS bemenet
+    volumes:
+      - /mnt/nas/rpxy/data:/data
+      - /mnt/nas/rpxy/letsencrypt:/etc/letsencrypt
