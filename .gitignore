@@ -1,0 +1,8 @@
+# Visual Studio ideiglenes fájljai
+.vs/
+
+# Visual Studio Code helyi beállításai (opcionális, de érdemes)
+.vscode/
+
+# Mac OS rejtett rendszerfájljai (ha esetleg a jövőben Mac-en is megnyitnád)
+.DS_Store
