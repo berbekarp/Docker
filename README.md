@@ -2,82 +2,70 @@
 
 Ez a mappa (`content`) tartalmazza az otthoni szerveremhez használt Docker Compose konfigurációs (`.yaml`) fájlokat. A szolgáltatások külön fájlokba vannak szedve a könnyebb kezelhetőség, átláthatóság és skálázhatóság érdekében.
 
-## 📦 Tartalmazott Szolgáltatások (Stackek)
-
-Az alábbi konténerek telepítési leírásai találhatók meg a mappában:
-
-* **`calibre.yaml`**: E-könyv szerver (Calibre / Calibre-Web) a digitális könyvtár kezeléséhez és böngészéséhez.
-* **`compose.yaml`**: Alapértelmezett / központi docker-compose fájl (általános hálózatok, vagy alap szolgáltatások definiálásához).
-* **`influxdb-grafana.yaml`**: InfluxDB idősoros adatbázis és Grafana vizualizációs platform (kiváló a Home Assistant adatok hosszú távú tárolására és gyönyörű grafikonok készítésére).
-* **`nginx-revproxy.yaml`**: Nginx Reverse Proxy (pl. Nginx Proxy Manager) a szolgáltatások biztonságos, HTTPS (SSL) alapon történő kiajánlásához az internet felé.
-* **`pihole.yaml`**: Hálózati szintű reklámblokkoló és privát DNS szerver (Pi-hole).
-* **`plex.yaml`**: Médiaszerver a filmek, sorozatok és zenék streameléséhez bármilyen eszközre.
-* **`portainer-agent.yaml`**: Portainer Agent, amely lehetővé teszi a Docker környezet távoli, grafikus felületen történő kezelését egy központi Portainer példányból.
-* **`qbittorrent.yaml`**: qBittorrent webes felülettel rendelkező letöltőkliens.
+## 📑 Tartalomjegyzék
+1. [Tartalmazott Szolgáltatások](#-tartalmazott-szolgáltatások)
+2. [Általános Telepítés és Frissítés](#-általános-telepítés-és-frissítés)
+3. [Részletes Beállítási Útmutatók (Wiki)](#-részletes-beállítási-útmutatók-wiki)
+4. [Támogatás](#-támogatás-support)
 
 ---
 
-## 🚀 Telepítés (Deploy)
+## 📦 Tartalmazott Szolgáltatások
 
-Mivel a szolgáltatások külön `.yaml` fájlokban vannak, az indításukhoz meg kell adni a `-f` (fájl) paramétert a Docker Compose parancsban.
+Kattints a fájlnevekre a pontos konfigurációk (YAML kódok) megtekintéséhez:
 
+* **[calibre.yaml](content/calibre.yaml)**: E-könyv szerver (Calibre / Calibre-Web) a digitális könyvtár kezeléséhez.
+* **[compose.yaml](content/compose.yaml)**: Alapértelmezett / központi docker-compose fájl.
+* **[influxdb-grafana.yaml](content/influxdb-grafana.yaml)**: InfluxDB adatbázis és Grafana vizualizációs platform.
+* **[nginx-revproxy.yaml](content/nginx-revproxy.yaml)**: Nginx Proxy Manager a biztonságos (HTTPS) kiajánláshoz.
+* **[pihole.yaml](content/pihole.yaml)**: Hálózati szintű reklámblokkoló és privát DNS szerver.
+* **[plex.yaml](content/plex.yaml)**: Médiaszerver a filmek, sorozatok és zenék streameléséhez.
+* **[portainer-agent.yaml](content/portainer-agent.yaml)**: Portainer Agent a Docker környezet távoli kezeléséhez.
+* **[qbittorrent.yaml](content/qbittorrent.yaml)**: qBittorrent webes felülettel rendelkező letöltőkliens.
+
+---
+
+## 🚀 Általános Telepítés és Frissítés
+
+Mivel a szolgáltatások külön `.yaml` fájlokban vannak, az indításukhoz és frissítésükhöz meg kell adni a `-f` (fájl) paramétert a Docker Compose parancsban.
+
+### Indítás (Deploy)
 1. Lépj be a fájlokat tartalmazó könyvtárba:
    ```bash
    cd /útvonal/a/content/mappához
-   ````
+````
 
-2.  Indíts el egy adott szolgáltatást a háttérben (`-d` flag):
+2.  Indítsd el a kiválasztott szolgáltatást (pl. Plex) a háttérben:
     ```bash
-    docker compose -f fajlnev.yaml up -d
+    docker compose -f plex.yaml up -d
     ```
 
-**Példa a Plex szerver elindítására:**
+### Frissítés (Update)
 
-```bash
-docker compose -f plex.yaml up -d
-```
-
-*(Tipp: Ha van olyan szolgáltatás, ami függ egy másiktól – pl. minden a reverse proxyn keresztül megy –, érdemes először az `nginx-revproxy.yaml`-t elindítani).*
-
------
-
-## 🔄 Frissítés (Update)
-
-A konténerek (image-ek) frissítése nagyon egyszerű, és szolgáltatásonként külön is elvégezhető az alábbi lépésekkel:
-
-1.  Lépj be a fájlokat tartalmazó könyvtárba:
-
+1.  Töltsd le a legújabb image-et az adott szolgáltatáshoz:
     ```bash
-    cd /útvonal/a/content/mappához
+    docker compose -f plex.yaml pull
     ```
-
-2.  Töltsd le a legújabb Docker image-et az adott szolgáltatáshoz:
-
+2.  Indítsd újra a konténert (a beállításaid és adataid megmaradnak):
     ```bash
-    docker compose -f fajlnev.yaml pull
+    docker compose -f plex.yaml up -d
     ```
-
-3.  Indítsd újra a konténert (a Docker automatikusan újraalkotja az új image alapján, az adataid a volume-okban megmaradnak):
-
-    ```bash
-    docker compose -f fajlnev.yaml up -d
-    ```
-
-4.  **(Opcionális)** Töröld a régi, már nem használt image-eket, hogy helyet szabadíts fel a szerveren:
-
+3.  Opcionálisan töröld a régi, már nem használt image-eket a helyfelszabadításhoz:
     ```bash
     docker image prune -f
     ```
 
-**Példa a Pi-hole teljes frissítésére:**
+-----
 
-```bash
-docker compose -f pihole.yaml pull
-docker compose -f pihole.yaml up -d
-docker image prune -f
-```
+## 📖 Részletes Beállítási Útmutatók (Wiki)
 
----
+Egyes szolgáltatások hálózati szintű, komplexebb beállításokat igényelnek. Ezekhez részletes, lépésről-lépésre leírások készültek a Wikiben. Kattints a linkekre a megtekintésükhöz:
+
+  * 🛡️ **[Pi-hole Belső DNS beállítása Cloudflare alapon](https://github.com/berbekarp/Docker/wiki/Pi-hole)** *(Megjegyzés: Ide másold be a valódi Wiki linkedet\!)*
+  * 🌐 **[Nginx Proxy Manager & Cloudflare SSL beállítása](https://github.com/berbekarp/Docker/wiki/Nginx-Proxy-Manager)** *(Megjegyzés: Ide másold be a valódi Wiki linkedet\!)*
+
+-----
+
 ## ☕ Támogatás (Support)
 
 Ha hasznosnak találod ezeket a konfigurációkat és leírásokat, egy virtuális kávéval megteheted, hogy támogatod a további munkámat! Bármilyen apró támogatást hatalmas köszönettel fogadok. 🙏
