@@ -33,7 +33,7 @@ Mivel a szolgáltatások külön `.yaml` fájlokban vannak, az indításukhoz é
 1. Lépj be a fájlokat tartalmazó könyvtárba:
    ```bash
    cd /útvonal/a/content/mappához
-````
+   ````
 
 2.  Indítsd el a kiválasztott szolgáltatást (pl. Plex) a háttérben:
     ```bash
@@ -64,7 +64,7 @@ Egyes szolgáltatások hálózati szintű, komplexebb beállításokat igényeln
   * 🛡️ **[Pi-hole Belső DNS beállítása Cloudflare alapon](https://github.com/berbekarp/Docker/wiki/Pi-hole)**
   * 🌐 **[Nginx Proxy Manager & Cloudflare SSL beállítása](https://github.com/berbekarp/Docker/wiki/Nginx-Proxy-Manager)**
 
----
+----
 
 ## ☕ Támogatás (Support)
 
