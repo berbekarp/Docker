@@ -77,12 +77,11 @@ docker compose -f pihole.yaml up -d
 docker image prune -f
 ```
 
------
-
+-
 ## ☕ Támogatás (Support)
 
-Ha hasznosnak találod ezeket a konfigurációkat és leírásokat, egy virtuális kávéval megteheted, hogy támogatod a további munkámat\! Bármilyen apró támogatást hatalmas köszönettel fogadok. 🙏
+Ha hasznosnak találod ezeket a Home Assistant kártyákat és dashboardokat, és szeretnéd megköszönni a fejlesztésükbe és dokumentálásukba fektetett időt, egy virtuális kávéval megteheted! Bármilyen apró támogatást hatalmas köszönettel fogadok. 🙏
 
-[](https://www.google.com/search?q=https://revolut.me/berbekarp)
+[![Revolut](https://img.shields.io/badge/Revolut-Support-black?style=for-the-badge&logo=revolut)](https://revolut.me/berbekarp)
 
-**Revolut azonosító:** `@berbekarp`
+**Revolut azonosító:** `@berbekarp`  
