@@ -61,8 +61,8 @@ Mivel a szolgáltatások külön `.yaml` fájlokban vannak, az indításukhoz é
 
 Egyes szolgáltatások hálózati szintű, komplexebb beállításokat igényelnek. Ezekhez részletes, lépésről-lépésre leírások készültek a Wikiben. Kattints a linkekre a megtekintésükhöz:
 
-  * 🛡️ **[Pi-hole Belső DNS beállítása Cloudflare alapon](https://github.com/berbekarp/Docker/wiki/Pi-hole)** *(Megjegyzés: Ide másold be a valódi Wiki linkedet\!)*
-  * 🌐 **[Nginx Proxy Manager & Cloudflare SSL beállítása](https://github.com/berbekarp/Docker/wiki/Nginx-Proxy-Manager)** *(Megjegyzés: Ide másold be a valódi Wiki linkedet\!)*
+  * 🛡️ **[Pi-hole Belső DNS beállítása Cloudflare alapon](https://github.com/berbekarp/Docker/wiki/Pi-hole)**
+  * 🌐 **[Nginx Proxy Manager & Cloudflare SSL beállítása](https://github.com/berbekarp/Docker/wiki/Nginx-Proxy-Manager)**
 
 -----
 
