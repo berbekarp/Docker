@@ -63,6 +63,7 @@ Egyes szolgáltatások hálózati szintű, komplexebb beállításokat igényeln
 
   * 🛡️ **[Pi-hole Belső DNS beállítása Cloudflare alapon](https://github.com/berbekarp/Docker/wiki/Pi%E2%80%90hole)**
   * 🌐 **[Nginx Proxy Manager & Cloudflare SSL beállítása](https://github.com/berbekarp/Docker/wiki/Nginx-Proxy-Manager)**
+  * 🔔 **[Watchtower és Diun beállítása (Docker konténer figyelők)](https://github.com/berbekarp/Docker/wiki/Watchtower-Duin)**
 
 ----
 
